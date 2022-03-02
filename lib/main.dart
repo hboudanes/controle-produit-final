@@ -15,13 +15,9 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Dosage',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        
-      ),
+      theme: ThemeData(),
       initialRoute: '/',
-      routes: route ,
+      routes: route,
     );
   }
 }
-
-

@@ -1,4 +1,4 @@
-import 'package:dosage/router/router.dart';
+import '../router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

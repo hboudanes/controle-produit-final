@@ -1,5 +1,5 @@
-import 'package:dosage/customertools/methodecalcul.dart';
-import 'package:dosage/extensions/number_verifier.dart';
+import '../customertools/methodecalcul.dart';
+import '../extensions/number_verifier.dart';
 import 'package:flutter/material.dart';
 
 import '../customertools/customer_widget.dart';

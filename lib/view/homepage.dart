@@ -1,7 +1,7 @@
 
-import 'package:dosage/customertools/customer_widget.dart';
-import 'package:dosage/view/dosageproteines.dart';
-import 'package:dosage/view/teneurcendre.dart';
+import '../customertools/customer_widget.dart';
+import '../view/dosageproteines.dart';
+import '../view/teneurcendre.dart';
 import 'package:flutter/material.dart';
 
 

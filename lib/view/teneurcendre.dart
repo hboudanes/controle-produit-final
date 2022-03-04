@@ -1,6 +1,6 @@
-import 'package:dosage/controller/teneurcontroller.dart';
-import 'package:dosage/customertools/customer_widget.dart';
-import 'package:dosage/extensions/number_verifier.dart';
+import '../controller/teneurcontroller.dart';
+import '../customertools/customer_widget.dart';
+import '../extensions/number_verifier.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

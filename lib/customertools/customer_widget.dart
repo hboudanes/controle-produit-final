@@ -38,3 +38,81 @@ class CustomInputButton extends StatelessWidget {
         child: Text(title!));
   }
 }
+
+class CustomListProduit extends StatelessWidget {
+  String? proteine;
+  String? matiereGrasse;
+  String? cendres;
+  String? humidite;
+  String? acidite;
+  var test;
+  CustomListProduit({
+    required String proteine,
+    required String matiereGrasse,
+    required String cendres,
+    required String humidite,
+    required String acidite,
+  
+  }) {
+
+    this.proteine = checkinput(proteine);
+    this.matiereGrasse = checkinput(matiereGrasse);
+    this.cendres = checkinput(cendres);
+    this.humidite = checkinput(humidite);
+    this.acidite = checkinput(acidite);
+  }
+  checkinput(String input) {
+    print(input != null);
+    print(input.isEmpty);
+    if (input != null && input.isNotEmpty) {
+      return input;
+    }
+    return '--';
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      ListTile(
+        title: Text(proteine!),
+        subtitle: const Text('Proteine%'),
+        trailing: IconButton(
+          icon: Icon(Icons.edit),
+          onPressed: () {},
+        ),
+      ),
+      ListTile(
+        title: Text(matiereGrasse!),
+        subtitle: const Text('MatiereGrasse%'),
+        trailing: IconButton(
+          icon: Icon(Icons.edit),
+          onPressed: () {},
+        ),
+      ),
+      ListTile(
+        title: Text(cendres!),
+        subtitle: const Text('cendres%'),
+        trailing: IconButton(
+          icon: Icon(Icons.edit),
+          onPressed: () {},
+        ),
+      ),
+      ListTile(
+        title: Text(humidite!),
+        subtitle: const Text('humidite%'),
+        trailing: IconButton(
+          icon: Icon(Icons.edit),
+          onPressed: () {},
+        ),
+      ),
+      ListTile(
+        title: Text(acidite!),
+        subtitle: const Text('acidite%'),
+        trailing: IconButton(
+          icon: Icon(Icons.edit),
+          onPressed: () {},
+        ),
+      )
+    ]);
+  }
+}

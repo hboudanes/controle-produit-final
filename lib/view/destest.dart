@@ -1,153 +1,60 @@
 import 'package:flutter/material.dart';
-
-// class test1 extends StatelessWidget {
-//   const test1({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(),
-//       body: ExpansionPanelList(children: [
-//          ExpansionPanel(
-//            headerBuilder: (context, isExpanded) => Text('data'),
-//            body: Text('data')
-
-//          )
-//       ]),
-//     );
-//   }
-// }
-class test extends StatefulWidget {
-  test({Key? key}) : super(key: key);
-
-  @override
-  State<test> createState() => _testState();
-}
-
-class _testState extends State<test> {
-  List<bool> _isExpanded = [false];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: SingleChildScrollView(
-        child: Container(
-          child: ExpansionPanelList(
-              expansionCallback: (int index, bool isExpanded) {
-                print(_isExpanded[index]);
-                setState(() {
-                  _isExpanded[index] = !isExpanded;
-                });
-              },
-              children: [
-                ExpansionPanel(
-                  headerBuilder: (BuildContext context, bool isExpanded) {
-                    return ListTile(
-                      title: Text('item.headerValu'),
-                    );
-                  },
-                  body: ListTile(
-                      title: Text('item.expandedValue'),
-                      subtitle: const Text(
-                          'To delete this panel, tap the trash can icon'),
-                      trailing: const Icon(Icons.delete),
-                      onTap: () {
-                        // setState(() {
-                        //   _data.removeWhere((Item currentItem) => item == currentItem);
-                        // });
-                      }),
-                  isExpanded: _isExpanded[0],
-                ),
-                ExpansionPanel(
-                  headerBuilder: (BuildContext context, bool isExpanded) {
-                    return ListTile(
-                      title: Text('item.headerValu'),
-                    );
-                  },
-                  body: ListTile(
-                      title: Text('item.expandedValue'),
-                      subtitle: const Text(
-                          'To delete this panel, tap the trash can icon'),
-                      trailing: const Icon(Icons.delete),
-                      onTap: () {
-                        // setState(() {
-                        //   _data.removeWhere((Item currentItem) => item == currentItem);
-                        // });
-                      }),
-                  isExpanded: _isExpanded[1],
-                )
-              ]),
-        ),
-      ),
-    );
-  }
-}
-
-// List<bool> generteListFalse(int length) {
-//   List<bool> list = [false];
-//   for (var i = 0; i < length - 1; i++) {
-//     list.add(false);
-//   }
-//   print(list);
-//   return list;
-// }
+import 'package:get/get.dart';
+import '../controller/produitcontroller.dart';
+import '../view/dosageproteines.dart';
+import '../customertools/customer_widget.dart';
 
 class testgetx extends StatelessWidget {
   const testgetx({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       appBar: AppBar(),
       body: SingleChildScrollView(
-        child: Container(
-          child: ExpansionPanelList(
+        child: GetX<produitcontroller>(
+          init: produitcontroller(),
+          builder: (value) {
+            
+            return ExpansionPanelList(
               expansionCallback: (int index, bool isExpanded) {
-                // print(_isExpanded[index]);
-                // setState(() {
-                //   _isExpanded[index] = !isExpanded;
-                // });
+                value.isExpanded[index] = !isExpanded;
+                
               },
-              children: [
-                ExpansionPanel(
+              children: List.generate(
+                value.produitFini.length,
+                (index) => ExpansionPanel(
                   headerBuilder: (BuildContext context, bool isExpanded) {
                     return ListTile(
-                      title: Text('item.headerValu'),
+                      title: Text(
+                          '${value.produitFini.elementAt(index).dateProduction} / ${value.produitFini.elementAt(index).jP}'),
+                      subtitle: const Text('Date De Production/J.P'),
                     );
                   },
-                  body: ListTile(
-                      title: Text('item.expandedValue'),
-                      subtitle: const Text(
-                          'To delete this panel, tap the trash can icon'),
-                      trailing: const Icon(Icons.delete),
-                      onTap: () {
-                        // setState(() {
-                        //   _data.removeWhere((Item currentItem) => item == currentItem);
-                        // });
-                      }),
-                  isExpanded: false,
+                  //  Text('${value.produitFini.elementAt(index).dateProduction}')
+
+                  body: CustomListProduit(
+                   
+                    proteine:
+                        value.produitFini.elementAt(index).proteine.toString(),
+                    matiereGrasse: value.produitFini
+                        .elementAt(index)
+                        .matiereGrasse
+                        .toString(),
+                    cendres:
+                        value.produitFini.elementAt(index).cendres.toString(),
+                    humidite:
+                        value.produitFini.elementAt(index).humidite.toString(),
+                    acidite:
+                        value.produitFini.elementAt(index).acidite.toString(),
+                  ),
+                  isExpanded: value.isExpanded[index],
                 ),
-                ExpansionPanel(
-                  headerBuilder: (BuildContext context, bool isExpanded) {
-                    return ListTile(
-                      title: Text('item.headerValu'),
-                    );
-                  },
-                  body: ListTile(
-                      title: Text('item.expandedValue'),
-                      subtitle: const Text(
-                          'To delete this panel, tap the trash can icon'),
-                      trailing: const Icon(Icons.delete),
-                      onTap: () {
-                        // setState(() {
-                        //   _data.removeWhere((Item currentItem) => item == currentItem);
-                        // });
-                      }),
-                  isExpanded: false,
-                )
-              ])
+              ),
+            );
+          },
         ),
       ),
-    );;
+    );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:dosage/customertools/methodecalcul.dart';
+import '../customertools/methodecalcul.dart';
 
 class TeneurController extends GetxController {
   double? masseEchantillon;

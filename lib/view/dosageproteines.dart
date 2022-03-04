@@ -1,5 +1,5 @@
-import 'package:dosage/controller/dosagecontroller.dart';
-import 'package:dosage/customertools/customer_widget.dart';
+import '../controller/dosagecontroller.dart';
+import '../customertools/customer_widget.dart';
 
 import 'package:flutter/material.dart';
 

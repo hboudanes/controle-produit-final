@@ -1,6 +1,6 @@
-import 'package:dosage/extensions/number_verifier.dart';
+import '../extensions/number_verifier.dart';
 import 'package:get/get.dart';
-import 'package:dosage/customertools/methodecalcul.dart';
+import '../customertools/methodecalcul.dart';
 
 class DosageController extends GetxController {
   double? masse;

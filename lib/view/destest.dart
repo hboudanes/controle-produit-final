@@ -10,7 +10,15 @@ class testgetx extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("SUIVI QUALITE PRODUIT"),
+        leading:IconButton(
+              onPressed: () {
+                
+              },
+              icon:const Icon(Icons.add)),
+        
+      ),
       body: SingleChildScrollView(
         child: GetX<produitcontroller>(
           init: produitcontroller(),

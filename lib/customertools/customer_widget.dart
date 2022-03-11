@@ -5,7 +5,9 @@ class CustomInputform extends StatelessWidget {
   final String? hint;
   final String? Function(String?)? valid;
   final String? Function(String?)? onsave;
-  CustomInputform({this.title, this.hint, this.valid, this.onsave});
+  const CustomInputform(
+      {Key? key, this.title, this.hint, this.valid, this.onsave})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -24,15 +26,17 @@ class CustomInputform extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class CustomInputButton extends StatelessWidget {
   final String? title;
   void Function()? onPressed;
-  CustomInputButton({this.title, required this.onPressed});
+  CustomInputButton({Key? key, this.title, required this.onPressed})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         style: ElevatedButton.styleFrom(
-          minimumSize: Size.fromHeight(50),
+          minimumSize: const Size.fromHeight(50),
         ),
         onPressed: onPressed,
         child: Text(title!));
@@ -48,18 +52,19 @@ class CustomListProduit extends StatelessWidget {
   String? acidite;
   var test;
   CustomListProduit({
+    Key? key,
     String? proteine,
     String? matiereGrasse,
     String? cendres,
     String? humidite,
     String? acidite,
-  }) {
+  }) : super(key: key) {
     this.proteine = checkinput(proteine!);
     this.matiereGrasse = checkinput(matiereGrasse!);
     this.cendres = checkinput(cendres!);
     this.humidite = checkinput(humidite!);
     this.acidite = checkinput(acidite!);
-    this.id;
+    id;
   }
   checkinput(String input) {
     print(input != null);

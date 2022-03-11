@@ -1,33 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/produitcontroller.dart';
-import '../view/dosageproteines.dart';
-import '../customertools/customer_widget.dart';
 
-class testgetx extends StatelessWidget {
-  const testgetx({Key? key}) : super(key: key);
-  
+class TestGetX extends StatelessWidget {
+  const TestGetX({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("SUIVI QUALITE PRODUIT"),
-        leading:IconButton(
-              onPressed: () {
-                
-              },
-              icon:const Icon(Icons.add)),
-        
+        title: const Text("SUIVI QUALITE PRODUIT"),
+        leading: IconButton(onPressed: () {}, icon: const Icon(Icons.add)),
       ),
       body: SingleChildScrollView(
-        child: GetX<produitcontroller>(
-          init: produitcontroller(),
+        child: GetX<ProduitController>(
+          init: ProduitController(),
           builder: (value) {
-            
             return ExpansionPanelList(
               expansionCallback: (int index, bool isExpanded) {
                 value.isExpanded[index] = !isExpanded;
-                
               },
               children: List.generate(
                 value.produitFini.length,

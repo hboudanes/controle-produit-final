@@ -1,16 +1,14 @@
-
-
 import '../database.dart';
 import '../model/produitfini.dart';
 import 'package:get/get.dart';
 
-class produitcontroller extends GetxController {
+class ProduitController extends GetxController {
   var produitFini = <ProduitFini>[].obs;
   Deze c = Deze();
   var fido = ProduitFini(
     id: 0,
     dateProduction: '22/03/2',
-    jp: 35,
+    jp: 123,
   );
   RxList isExpanded = [false].obs;
   //  String? dateProduction;
@@ -26,17 +24,13 @@ class produitcontroller extends GetxController {
   // }
 
   initProduitFini() async {
-    produitFini.add(await c.allProduit() as ProduitFini);
+    produitFini.addAll(await c.allProduit());
   }
 
   @override
   void onInit() async {
     await c.creatProduit(fido);
-    print('-------------------------------------------');
     initProduitFini();
-    print(await c.allProduit());
-    print('hich');
-
     for (var i = 0; i < produitFini.length - 1; i++) {
       isExpanded.add(false);
     }

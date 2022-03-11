@@ -6,7 +6,7 @@ import '../customertools/customer_widget.dart';
 
 class testgetx extends StatelessWidget {
   const testgetx({Key? key}) : super(key: key);
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,27 +35,13 @@ class testgetx extends StatelessWidget {
                   headerBuilder: (BuildContext context, bool isExpanded) {
                     return ListTile(
                       title: Text(
-                          '${value.produitFini.elementAt(index).dateProduction} / ${value.produitFini.elementAt(index).jP}'),
+                          '${value.produitFini.elementAt(index).dateProduction} / ${value.produitFini.elementAt(index).jp}'),
                       subtitle: const Text('Date De Production/J.P'),
                     );
                   },
                   //  Text('${value.produitFini.elementAt(index).dateProduction}')
 
-                  body: CustomListProduit(
-                   
-                    proteine:
-                        value.produitFini.elementAt(index).proteine.toString(),
-                    matiereGrasse: value.produitFini
-                        .elementAt(index)
-                        .matiereGrasse
-                        .toString(),
-                    cendres:
-                        value.produitFini.elementAt(index).cendres.toString(),
-                    humidite:
-                        value.produitFini.elementAt(index).humidite.toString(),
-                    acidite:
-                        value.produitFini.elementAt(index).acidite.toString(),
-                  ),
+                  body: Text('hel'),
                   isExpanded: value.isExpanded[index],
                 ),
               ),

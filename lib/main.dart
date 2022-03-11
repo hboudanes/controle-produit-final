@@ -1,8 +1,12 @@
 import '../router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../database.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Deze c = Deze();
+  c.createDatabase();
   runApp(const MyApp());
 }
 

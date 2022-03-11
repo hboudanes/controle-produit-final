@@ -1,29 +1,18 @@
+
+
+import '../database.dart';
 import '../model/produitfini.dart';
 import 'package:get/get.dart';
 
 class produitcontroller extends GetxController {
-  RxList test = [
-    {
-      "titel": "hello word",
-      "body ": "body te",
-    },
-    {
-      "titel": "hello word",
-      "body ": "body te",
-    },
-    {
-      "titel": "hello word",
-      "body ": "body te",
-    }
-  ].obs;
-
   var produitFini = <ProduitFini>[].obs;
-  var d = 0.obs;
+  Deze c = Deze();
+  var fido = ProduitFini(
+    id: 0,
+    dateProduction: '22/03/2',
+    jp: 35,
+  );
   RxList isExpanded = [false].obs;
-
-  upd() {
-    d++;
-  }
   //  String? dateProduction;
   // int? jP;
   // double? proteine;
@@ -31,15 +20,23 @@ class produitcontroller extends GetxController {
   // double? cendres;
   // double? humidite;
   // double? acidite;
-  initProduitFini() {
-    produitFini.add(ProduitFini(dateProduction: '12/02/2019', jP: 1,proteine: 53,matiereGrasse: 8,cendres: 20,humidite: 6,acidite: 8));
-    produitFini.add(ProduitFini(dateProduction: '12/02/2019', jP: 1,proteine: 53,matiereGrasse: 8,cendres: 20,humidite: 6,acidite: 8));
-    produitFini.elementAt(0).dateProduction;
+  // initProduitFini() {
+  //   produitFini.add(ProduitFini(dateProduction: '12/02/2019', jp: 1, id: 1));
+  //   produitFini.add(ProduitFini(dateProduction: '12/02/2019', jp: 2, id: 2));
+  // }
+
+  initProduitFini() async {
+    produitFini.add(await c.allProduit() as ProduitFini);
   }
 
   @override
-  void onInit() {
+  void onInit() async {
+    await c.creatProduit(fido);
+    print('-------------------------------------------');
     initProduitFini();
+    print(await c.allProduit());
+    print('hich');
+
     for (var i = 0; i < produitFini.length - 1; i++) {
       isExpanded.add(false);
     }

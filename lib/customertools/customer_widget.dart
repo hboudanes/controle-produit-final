@@ -44,31 +44,29 @@ class CustomInputButton extends StatelessWidget {
 }
 
 class CustomListProduit extends StatelessWidget {
-  String? id;
+
   String? proteine;
   String? matiereGrasse;
   String? cendres;
   String? humidite;
   String? acidite;
-  var test;
   CustomListProduit({
-    Key? key,
+ 
     String? proteine,
     String? matiereGrasse,
     String? cendres,
     String? humidite,
     String? acidite,
-  }) : super(key: key) {
-    this.proteine = checkinput(proteine!);
-    this.matiereGrasse = checkinput(matiereGrasse!);
-    this.cendres = checkinput(cendres!);
-    this.humidite = checkinput(humidite!);
-    this.acidite = checkinput(acidite!);
-    id;
+  })  {
+    this.proteine = checkinput(proteine);
+    this.matiereGrasse = checkinput(matiereGrasse);
+    this.cendres = checkinput(cendres);
+    this.humidite = checkinput(humidite);
+    this.acidite = checkinput(acidite);
+   
   }
-  checkinput(String input) {
-    print(input != null);
-    print(input.isEmpty);
+  checkinput(String? input) {
+    
     if (input != null && input.isNotEmpty) {
       return input;
     }

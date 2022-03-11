@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controller/produitcontroller.dart';
+import '../customertools/customer_widget.dart';
 
 class TestGetX extends StatelessWidget {
   const TestGetX({Key? key}) : super(key: key);
@@ -32,7 +33,9 @@ class TestGetX extends StatelessWidget {
                   },
                   //  Text('${value.produitFini.elementAt(index).dateProduction}')
 
-                  body: Text('hel'),
+                  body: CustomListProduit(
+                    
+                  ),
                   isExpanded: value.isExpanded[index],
                 ),
               ),

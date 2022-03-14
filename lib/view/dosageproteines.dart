@@ -25,7 +25,7 @@ class Dosageproteines extends StatelessWidget {
                   height: 120,
                 ),
                 Text(
-                  'Dosage Protéines (Kjeldahl)',
+                  'Dosage Protéines (Kjeldahl) J.P: ${Get.arguments["jp"]}',
                   style: TextStyle(fontSize: 20),
                 ),
                 SizedBox(
@@ -37,7 +37,7 @@ class Dosageproteines extends StatelessWidget {
                       title: 'Masse exacte de l\'echantillon analysé',
                       hint: 'Masse en g',
                       onsave: (String? Value) {
-                         value.saveValue(value: Value!, type: 'm');
+                        value.saveValue(value: Value!, type: 'm');
                       },
                       valid: (String? Value) {
                         value.valide(Value);
@@ -58,9 +58,13 @@ class Dosageproteines extends StatelessWidget {
                     CustomInputButton(
                       onPressed: () {
                         var x = _formpro.currentState;
-
+                        print('------------------');
+                        print(Get.arguments["id"].runtimeType);
+                        print(Get.arguments["jp"].runtimeType);
+                        print('------------------');
                         if (x!.validate()) {
                           x.save();
+                          value.updateProduite();
                           value.results;
                         }
                       },

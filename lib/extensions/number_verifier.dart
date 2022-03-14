@@ -16,7 +16,7 @@ extension NumberVerifier on String {
       
       return false;
     }
-     print("true");
+    
     return true;
   }
 }

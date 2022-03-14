@@ -1,17 +1,17 @@
 class ProduitFini {
-  final int id;
+  final int? id;
   final String dateProduction;
-  final int jp;
-  // double? proteine;
+  final int? jp;
+  double? proteine;
   // double? matiereGrasse;
   // double? cendres;
   // double? humidite;
   // double? acidite;
   ProduitFini({
     required this.dateProduction,
-    required this.id,
-    required this.jp,
-    // this.proteine,
+    this.id,
+    this.jp,
+    this.proteine,
     // this.matiereGrasse,
     // this.cendres,
     // this.humidite,

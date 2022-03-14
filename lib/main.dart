@@ -1,12 +1,11 @@
 import '../router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../database.dart';
+import 'databasehelper.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Deze c = Deze();
-  c.createDatabase();
   runApp(const MyApp());
 }
 
@@ -17,6 +16,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        Locale('en', ''), // English, no country code
+        Locale('fr', 'fr'), // Spanish, no country code
+      ],
       title: 'Dosage',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),

@@ -2,7 +2,7 @@ import 'package:dosage/model/produitfini.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-class Deze {
+class databasehelper {
   static Database? _db;
 
   createDatabase() async {
@@ -35,7 +35,7 @@ class Deze {
   initDB(Database db, int version) {
     // Run the CREATE TABLE statement on the database.
     return db.execute(
-      'CREATE TABLE produit(id INTEGER PRIMARY KEY, dateProduction TEXT, jp INTEGER)',
+      'CREATE TABLE produit(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, dateProduction TEXT, jp INTEGER,Proteine INTEGER)',
     );
   }
 
@@ -57,6 +57,26 @@ class Deze {
     } catch (e) {
       print('from creatProduit ==> $e');
     }
+  }
+
+  Future<void> updateDog(ProduitFini produit) async {
+    try {
+      // Get a reference to the database.
+      final Database db = await createDatabase();
+
+      // Update the given Dog.
+      await db.update(
+        'produit',
+        produit.toMap(),
+        // Ensure that the Dog has a matching id.
+        where: 'id = ?',
+        // Pass the Dog's id as a whereArg to prevent SQL injection.
+        whereArgs: [produit.id],
+      );
+    } catch (e) {
+      print('from creatProduit ==> $e');
+    }
+    // Get a reference to the database.
   }
 
   Future<List<ProduitFini>> allProduit() async {

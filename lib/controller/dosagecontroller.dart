@@ -3,12 +3,14 @@ import '../extensions/number_verifier.dart';
 import 'package:get/get.dart';
 import '../customertools/methodecalcul.dart';
 import '../model/produitfini.dart';
+import '../controller/suiviproduitcontroller.dart';
 
 class DosageController extends GetxController {
+  SuiviProduitController view = Get.put(SuiviProduitController());
   double? masse;
   double? volume;
   databasehelper c = databasehelper();
-  RxString result = ''.obs;
+  String result = '';
   void saveValue({required String value, required String type}) {
     double myDouble = double.parse(value);
     switch (type) {
@@ -26,18 +28,7 @@ class DosageController extends GetxController {
       default:
     }
   }
-  // Map<String,dynamic> argument
-  void updateProduite( )async {
-     
-      
-      var fido = ProduitFini(
-        id: 2,
-        dateProduction: '2022-03-03',
-        proteine: 32
-      );
-      await c.updateDog(fido);
-    
-  }
+
   String? valide(String? value) {
     if (!value!.checkTryPars) {
       return 'Vérifiez votre saisie';
@@ -46,11 +37,16 @@ class DosageController extends GetxController {
     return null;
   }
 
-  get results {
+  // Map<String,dynamic> argument
+  void updateProduite(int parmID, int index) async {
     double resultDouble = Calcul.proteinDose(mass: masse!, volume: volume!);
-
-    result.value = resultDouble.toStringAsFixed(12);
-
-    print(result);
+    result = resultDouble.toStringAsFixed(12);
+    var fido = ProduitFini(
+      id: parmID,
+      proteine: resultDouble,
+    );
+    await c.updateproduit(fido);
+    view.updateList(index, resultDouble);
+    update();
   }
 }

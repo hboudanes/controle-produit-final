@@ -1,19 +1,19 @@
 class ProduitFini {
   final int? id;
-  final String dateProduction;
+  final String? dateProduction;
   final int? jp;
   double? proteine;
   // double? matiereGrasse;
-  // double? cendres;
+  double? cendres;
   // double? humidite;
   // double? acidite;
   ProduitFini({
-    required this.dateProduction,
+    this.dateProduction,
     this.id,
     this.jp,
     this.proteine,
     // this.matiereGrasse,
-    // this.cendres,
+    this.cendres,
     // this.humidite,
     // this.acidite,
   });
@@ -24,7 +24,18 @@ class ProduitFini {
       'jp': jp,
     };
   }
-
+  Map<String, dynamic> toMapProtiene() {
+    return {
+      'id': id,
+      'proteine': proteine,
+    };
+  }
+  Map<String, dynamic> toMapCendres() {
+    return {
+      'id': id,
+      'cendres': cendres,
+    };
+  }
   // @override
   // String toString() {
   //   return 'produits{id: $id, name: $dateProduction, age: $jp}';

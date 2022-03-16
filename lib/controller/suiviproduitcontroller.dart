@@ -3,28 +3,25 @@ import '../model/produitfini.dart';
 import 'package:get/get.dart';
 
 class SuiviProduitController extends GetxController {
-  var produitFini = <ProduitFini>[].obs;
+  RxList<ProduitFini> produitFini = <ProduitFini>[].obs;
   databasehelper c = databasehelper();
- 
-  RxList isExpanded = [false].obs;
-  //  String? dateProduction;
-  // int? jP;
-  // double? proteine;
-  // double? matiereGrasse;
-  // double? cendres;
-  // double? humidite;
-  // double? acidite;
-  // initProduitFini() {
-  //   produitFini.add(ProduitFini(dateProduction: '12/02/2019', jp: 1, id: 1));
-  //   produitFini.add(ProduitFini(dateProduction: '12/02/2019', jp: 2, id: 2));
-  // }
 
-  initProduitFini() async {
-    
+  RxList isExpanded = [false].obs;
+
+  void initProduitFini() async {
+    produitFini = <ProduitFini>[].obs;
     produitFini.addAll(await c.allProduit());
 
     for (var i = 0; i < produitFini.length - 1; i++) {
       isExpanded.add(false);
+    }
+  }
+
+  void updateList(int index, double resultDouble) {
+    print('interieur');
+    if (produitFini.elementAt(index).proteine != null) {
+      print('interieur not null');
+      produitFini.elementAt(index).proteine = resultDouble;
     }
   }
 

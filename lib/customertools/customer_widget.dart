@@ -45,14 +45,14 @@ class CustomInputButton extends StatelessWidget {
 }
 
 class ListProduit extends StatelessWidget {
-  String? pourcentrage ;
+  double? pourcentrage ;
   String? title;
   void Function()? onPressed;
   ListProduit({ this.pourcentrage,required this.title, required this.onPressed});
   
-  checkinput(String? input) {
-    if (input != null && input.isNotEmpty) {
-      return input;
+  String checkinput(double? input) {
+    if (input != null  && input != 'null') {// input != 'null' cause module check null and return 'null'
+      return input.toString();
     }
     return '--';
   }
@@ -60,7 +60,7 @@ class ListProduit extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(checkinput(pourcentrage) ),
-      subtitle: Text('${title}%'),
+      subtitle: Text(title!),
       trailing: IconButton(
         icon: Icon(Icons.edit),
         onPressed: onPressed,
@@ -69,78 +69,6 @@ class ListProduit extends StatelessWidget {
   }
 }
 
-class CustomListProduit extends StatelessWidget {
-  String? proteine;
-  String? matiereGrasse;
-  String? cendres;
-  String? humidite;
-  String? acidite;
-  CustomListProduit({
-    String? proteine,
-    String? matiereGrasse,
-    String? cendres,
-    String? humidite,
-    String? acidite,
-  }) {
-    this.proteine = checkinput(proteine);
-    this.matiereGrasse = checkinput(matiereGrasse);
-    this.cendres = checkinput(cendres);
-    this.humidite = checkinput(humidite);
-    this.acidite = checkinput(acidite);
-  }
-  checkinput(String? input) {
-    if (input != null && input.isNotEmpty) {
-      return input;
-    }
-    return '--';
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [
-      ListTile(
-        title: Text(proteine!),
-        subtitle: const Text('Proteine%'),
-        trailing: IconButton(
-          icon: Icon(Icons.edit),
-          onPressed: () {},
-        ),
-      ),
-      ListTile(
-        title: Text(matiereGrasse!),
-        subtitle: const Text('MatiereGrasse%'),
-        trailing: IconButton(
-          icon: Icon(Icons.edit),
-          onPressed: () {},
-        ),
-      ),
-      ListTile(
-        title: Text(cendres!),
-        subtitle: const Text('cendres%'),
-        trailing: IconButton(
-          icon: Icon(Icons.edit),
-          onPressed: () {},
-        ),
-      ),
-      ListTile(
-        title: Text(humidite!),
-        subtitle: const Text('humidite%'),
-        trailing: IconButton(
-          icon: Icon(Icons.edit),
-          onPressed: () {},
-        ),
-      ),
-      ListTile(
-        title: Text(acidite!),
-        subtitle: const Text('acidite%'),
-        trailing: IconButton(
-          icon: Icon(Icons.edit),
-          onPressed: () {},
-        ),
-      )
-    ]);
-  }
-}
 
 // class TextFieldDate extends StatefulWidget{
 //   @override

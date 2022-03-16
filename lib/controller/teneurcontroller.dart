@@ -6,7 +6,7 @@ class TeneurController extends GetxController {
   double? masseCreuset;
   double? masseCreusetChauffe;
 
-  RxString result = ''.obs;
+  String result = '';
   void saveValue({required String value, required String type}) {
     double myDouble = double.parse(value);
     switch (type) {
@@ -34,8 +34,8 @@ class TeneurController extends GetxController {
         masseEchantillon: masseEchantillon!,
         masseCreuset: masseCreuset!,
         masseCreusetChauffe: masseCreusetChauffe!);
-    result.value = resultDouble.toStringAsFixed(12);
-    print('hicham');
-    print(result);
+    result = resultDouble.toStringAsFixed(12);
+    update();
+    
   }
 }

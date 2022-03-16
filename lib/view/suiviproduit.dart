@@ -4,8 +4,9 @@ import '../controller/suiviproduitcontroller.dart';
 import '../customertools/customer_widget.dart';
 
 class SuiviProduit extends StatelessWidget {
-  const SuiviProduit({Key? key}) : super(key: key);
+  // const SuiviProduit({Key? key}) : super(key: key);
   static const route = '/';
+  // SuiviProduitController viewmodule = Get.put(SuiviProduitController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +32,7 @@ class SuiviProduit extends StatelessWidget {
                   headerBuilder: (BuildContext context, bool isExpanded) {
                     return ListTile(
                       title: Text(
-                          '${value.produitFini.elementAt(index).dateProduction} / ${value.produitFini.elementAt(index).jp} /${value.produitFini.elementAt(index).id}'),
+                          '${value.produitFini.elementAt(index).dateProduction} / ${value.produitFini.elementAt(index).jp}'),
                       subtitle: const Text('Date De Production/J.P'),
                     );
                   },
@@ -40,18 +41,34 @@ class SuiviProduit extends StatelessWidget {
                   body: Column(children: [
                     ListProduit(
                       onPressed: () {
-                        print('hello');
+                        
                         Get.toNamed(
                           '/Dosagepr',
                           arguments: {
                             "id": value.produitFini.elementAt(index).id,
-                            "dateProduction":value.produitFini.elementAt(index).dateProduction,
-                            "jp": value.produitFini.elementAt(index).jp,
+                            "index":index,
+                            "jp":value.produitFini.elementAt(index).jp,
                           },
                         );
                       },
                       title: 'proteine',
-                      pourcentrage:'${value.produitFini.elementAt(index).proteine }',
+                      pourcentrage:value.produitFini.elementAt(index).proteine,
+                    ),
+                    // cendres
+                    ListProduit(
+                      onPressed: () {
+                        
+                        Get.toNamed(
+                          '/cendre',
+                          arguments: {
+                            "id": value.produitFini.elementAt(index).id,
+                            "index":index,
+                            "jp":value.produitFini.elementAt(index).jp,
+                          },
+                        );
+                      },
+                      title: 'cendres',
+                      pourcentrage:value.produitFini.elementAt(index).cendres,
                     )
                   ]),
                   isExpanded: value.isExpanded[index],

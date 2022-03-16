@@ -35,7 +35,7 @@ class databasehelper {
   initDB(Database db, int version) {
     // Run the CREATE TABLE statement on the database.
     return db.execute(
-      'CREATE TABLE produit(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, dateProduction TEXT, jp INTEGER,Proteine INTEGER)',
+      'CREATE TABLE produit(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, dateProduction TEXT, jp INTEGER,proteine DOUBLE,cendres DOUBLE)',
     );
   }
 
@@ -45,8 +45,8 @@ class databasehelper {
       // Get a reference to the database.
       final Database db = await createDatabase();
 
-      // Insert the Dog into the correct table. You might also specify the
-      // `conflictAlgorithm` to use in case the same dog is inserted twice.
+      // Insert the produit into the correct table. You might also specify the
+      // `conflictAlgorithm` to use in case the same produit is inserted twice.
       //
       // In this case, replace any previous data.
       await db.insert(
@@ -58,27 +58,47 @@ class databasehelper {
       print('from creatProduit ==> $e');
     }
   }
-
-  Future<void> updateDog(ProduitFini produit) async {
+  
+  Future<void> updateproduit(ProduitFini produit) async {
     try {
       // Get a reference to the database.
       final Database db = await createDatabase();
 
-      // Update the given Dog.
+      // Update the given produit.
       await db.update(
         'produit',
-        produit.toMap(),
-        // Ensure that the Dog has a matching id.
+        produit.toMapProtiene(),
+        // Ensure that the produit has a matching id.
         where: 'id = ?',
-        // Pass the Dog's id as a whereArg to prevent SQL injection.
+        // Pass the produit's id as a whereArg to prevent SQL injection.
         whereArgs: [produit.id],
       );
+      print('is ok');
     } catch (e) {
       print('from creatProduit ==> $e');
     }
     // Get a reference to the database.
   }
+  Future<void> updatecendres(ProduitFini produit) async {
+    try {
+      // Get a reference to the database.
+      final Database db = await createDatabase();
 
+      // Update the given produit.
+      await db.update(
+        'produit',
+        produit.toMapCendres(),
+        // Ensure that the produit has a matching id.
+        where: 'id = ?',
+        // Pass the produit's id as a whereArg to prevent SQL injection.
+        whereArgs: [produit.id],
+      );
+      print('is ok');
+    } catch (e) {
+      print('from creatProduit ==> $e');
+    }
+    // Get a reference to the database.
+  }
   Future<List<ProduitFini>> allProduit() async {
     try {
       // Get a reference to the database.
@@ -93,6 +113,7 @@ class databasehelper {
           id: maps[i]['id'],
           dateProduction: maps[i]['dateProduction'],
           jp: maps[i]['jp'],
+          proteine: maps[i]['proteine'],
         );
       });
     } catch (e) {

@@ -7,7 +7,7 @@ import '../view/suiviproduit.dart';
 
 Map<String, Widget Function(BuildContext)> route = <String, WidgetBuilder>{
 
-  SuiviProduit.route: (context) => const SuiviProduit(),
+  SuiviProduit.route: (context) => SuiviProduit(),
   AddProduit.route: (context) => AddProduit(),
   Dosageproteines.route: (context) => Dosageproteines(),
   teneurcendre.route: (context) => teneurcendre(),

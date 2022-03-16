@@ -71,8 +71,8 @@ class AddProduit extends StatelessWidget {
                             if (x!.validate()) {
                               x.save();
                               value.addProduit();
+                              Get.offAllNamed('/');
                               viewmodule.initProduitFini();
-                              Get.toNamed('/');
                             }
                           },
                           title: 'Ajoute',

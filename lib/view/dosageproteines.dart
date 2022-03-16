@@ -1,12 +1,12 @@
-import '../controller/dosagecontroller.dart';
+import '../controller/proteinecontroller.dart';
 
 import '../customertools/customer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Dosageproteines extends StatelessWidget {
+class DosageProteines extends StatelessWidget {
   static const route = '/Dosagepr';
-  Dosageproteines({Key? key}) : super(key: key);
+  DosageProteines({Key? key}) : super(key: key);
   GlobalKey<FormState> _formpro = new GlobalKey<FormState>();
  
   @override
@@ -29,8 +29,8 @@ class Dosageproteines extends StatelessWidget {
                 SizedBox(
                   height: 50,
                 ),
-                GetBuilder<DosageController>(
-                    init: DosageController(),
+                GetBuilder<ProteineController>(
+                    init: ProteineController(),
                     builder: (value) {
                       return Column(children: [
                         CustomInputform(

@@ -31,8 +31,8 @@ class AddProduit extends StatelessWidget {
                 const SizedBox(
                   height: 50,
                 ),
-                GetBuilder<addProduitController>(
-                    init: addProduitController(),
+                GetBuilder<AddProduitController>(
+                    init: AddProduitController(),
                     builder: (value) {
                       return Column(children: [
                         SizedBox(height: 30),
@@ -46,7 +46,7 @@ class AddProduit extends StatelessWidget {
                             return null;
                           },
                           onsave: (String? Value) {
-                            value.getdate(Value!);
+                            value.getDate(Value!);
                           },
                         ),
                         SizedBox(height: 30),

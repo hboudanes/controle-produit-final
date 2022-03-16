@@ -9,6 +9,6 @@ Map<String, Widget Function(BuildContext)> route = <String, WidgetBuilder>{
 
   SuiviProduit.route: (context) => SuiviProduit(),
   AddProduit.route: (context) => AddProduit(),
-  Dosageproteines.route: (context) => Dosageproteines(),
-  teneurcendre.route: (context) => teneurcendre(),
+  DosageProteines.route: (context) => DosageProteines(),
+  TeneurCendre.route: (context) => TeneurCendre(),
 };

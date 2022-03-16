@@ -5,13 +5,13 @@ import '../customertools/methodecalcul.dart';
 import '../model/produitfini.dart';
 import '../controller/suiviproduitcontroller.dart';
 
-class DosageController extends GetxController {
+class ProteineController extends GetxController {
   
   double? masse;
   double? volume;
   String result = '';
   SuiviProduitController view = Get.put(SuiviProduitController());
-  databasehelper c = databasehelper();
+  DatabaseHelper c = DatabaseHelper();
   void saveValue({required String value, required String type}) {
     double myDouble = double.parse(value);
     switch (type) {
@@ -46,7 +46,7 @@ class DosageController extends GetxController {
       id: parmID,
       proteine: resultDouble,
     );
-    await c.updateproduit(fido);
+    await c.updateProteine(fido);
     view.updateList(index, resultDouble,'proteine');
     update();
   }

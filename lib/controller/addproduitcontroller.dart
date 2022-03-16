@@ -2,11 +2,11 @@ import 'package:get/get.dart';
 import '../databasehelper.dart';
 import '../model/produitfini.dart';
 
-class addProduitController extends GetxController {
+class AddProduitController extends GetxController {
   String? date;
   int? jp;
-  databasehelper c = databasehelper();
-  void getdate(String value) {
+  DatabaseHelper c = DatabaseHelper();
+  void getDate(String value) {
     date = value;
   }
 
@@ -16,7 +16,7 @@ class addProduitController extends GetxController {
 
   void addProduit() async {
     if (date != null && jp != null) {
-      print('hello');
+     
       var fido = ProduitFini(
         dateProduction: date!,
         jp: jp!,

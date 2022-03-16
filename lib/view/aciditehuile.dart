@@ -54,7 +54,7 @@ class _aciditeHuileState extends State<aciditeHuile> {
                   if (x!.validate()) {
                     x.save();
                     if ('h' != null) {
-                      print('he');
+                    
                     }
                   }
                   // x!.save();

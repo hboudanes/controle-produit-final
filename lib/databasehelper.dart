@@ -2,7 +2,7 @@ import 'package:dosage/model/produitfini.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-class databasehelper {
+class DatabaseHelper {
   static Database? _db;
 
   createDatabase() async {
@@ -59,7 +59,7 @@ class databasehelper {
     }
   }
   
-  Future<void> updateproduit(ProduitFini produit) async {
+  Future<void> updateProteine(ProduitFini produit) async {
     try {
       // Get a reference to the database.
       final Database db = await createDatabase();
@@ -73,7 +73,7 @@ class databasehelper {
         // Pass the produit's id as a whereArg to prevent SQL injection.
         whereArgs: [produit.id],
       );
-      print('is ok');
+     
     } catch (e) {
       print('from creatProduit ==> $e');
     }
@@ -93,7 +93,7 @@ class databasehelper {
         // Pass the produit's id as a whereArg to prevent SQL injection.
         whereArgs: [produit.id],
       );
-      print('is ok');
+     
     } catch (e) {
       print('from creatProduit ==> $e');
     }

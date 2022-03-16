@@ -1,13 +1,13 @@
 
-import '../controller/teneurcontroller.dart';
+import '../controller/cendrescontroller.dart';
 import '../customertools/customer_widget.dart';
 import '../extensions/number_verifier.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class teneurcendre extends StatelessWidget {
+class TeneurCendre extends StatelessWidget {
   static const route = '/cendre';
-  teneurcendre({Key? key}) : super(key: key);
+  TeneurCendre({Key? key}) : super(key: key);
   GlobalKey<FormState> _formpro = new GlobalKey<FormState>();
 
   @override
@@ -19,8 +19,8 @@ class teneurcendre extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Form(
             key: _formpro,
-            child: GetBuilder<TeneurController>(
-              init: TeneurController(),
+            child: GetBuilder<CendresController>(
+              init: CendresController(),
               builder: (value) {
               return Column(
                 children: [

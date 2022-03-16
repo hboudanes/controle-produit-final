@@ -1,7 +1,6 @@
 import '../router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'databasehelper.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
         Locale('en', ''), // English, no country code
         Locale('fr', 'fr'), // Spanish, no country code
       ],
-      title: 'Dosage',
+      title: 'Suivi la qualité de produit fini',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(),
       initialRoute: '/',

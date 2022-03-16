@@ -1,4 +1,4 @@
-import 'package:dosage/controller/suiviproduitcontroller.dart';
+
 import '../controller/teneurcontroller.dart';
 import '../customertools/customer_widget.dart';
 import '../extensions/number_verifier.dart';
@@ -12,21 +12,23 @@ class teneurcendre extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TeneurController viewmodule = Get.put(TeneurController());
+    
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Form(
             key: _formpro,
-            child: GetBuilder<TeneurController>(builder: (value) {
+            child: GetBuilder<TeneurController>(
+              init: TeneurController(),
+              builder: (value) {
               return Column(
                 children: [
                   SizedBox(
                     height: 120,
                   ),
                   Text(
-                    'DOSAGE DES CENDRES BRUTES',
+                    'DOSAGE DES CENDRES BRUTES jp: ${Get.arguments["jp"]}',
                     style: TextStyle(fontSize: 20),
                   ),
                   SizedBox(
@@ -80,7 +82,7 @@ class teneurcendre extends StatelessWidget {
 
                       if (x!.validate()) {
                         x.save();
-                        value.results;
+                        value.updateCender(Get.arguments["id"],Get.arguments["index"]);
                       }
                       // x!.save();
                     },

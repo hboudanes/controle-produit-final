@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 class SuiviProduitController extends GetxController {
   RxList<ProduitFini> produitFini = <ProduitFini>[].obs;
+
   databasehelper c = databasehelper();
 
   RxList isExpanded = [false].obs;
@@ -17,11 +18,25 @@ class SuiviProduitController extends GetxController {
     }
   }
 
-  void updateList(int index, double resultDouble) {
-    print('interieur');
-    if (produitFini.elementAt(index).proteine != null) {
-      print('interieur not null');
-      produitFini.elementAt(index).proteine = resultDouble;
+  void updateList(int index, double resultDouble, String type) {
+    for (var i = 0; i < produitFini.length - 1; i++) {
+      isExpanded.add(false);
+    }
+    switch (type) {
+      case "proteine":
+        print('proteine');
+        List<ProduitFini> produitFiniC = produitFini;
+        produitFiniC.elementAt(index).proteine = resultDouble;
+        produitFiniC = produitFini;
+        break;
+      case "cendres":
+        print('cendres');
+        List<ProduitFini> produitFiniC = produitFini;
+        produitFiniC.elementAt(index).cendres = resultDouble;
+        produitFiniC = produitFini;
+        break;
+      default:
+        initProduitFini();
     }
   }
 

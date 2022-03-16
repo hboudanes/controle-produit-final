@@ -35,7 +35,7 @@ class databasehelper {
   initDB(Database db, int version) {
     // Run the CREATE TABLE statement on the database.
     return db.execute(
-      'CREATE TABLE produit(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, dateProduction TEXT, jp INTEGER,proteine DOUBLE,cendres DOUBLE)',
+      'CREATE TABLE produit(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, dateProduction TEXT,jp INTEGER,proteine DOUBLE,cendres DOUBLE)',
     );
   }
 
@@ -79,7 +79,7 @@ class databasehelper {
     }
     // Get a reference to the database.
   }
-  Future<void> updatecendres(ProduitFini produit) async {
+  Future<void> updateCendres(ProduitFini produit) async {
     try {
       // Get a reference to the database.
       final Database db = await createDatabase();
@@ -114,6 +114,7 @@ class databasehelper {
           dateProduction: maps[i]['dateProduction'],
           jp: maps[i]['jp'],
           proteine: maps[i]['proteine'],
+          cendres: maps[i]['cendres'],
         );
       });
     } catch (e) {

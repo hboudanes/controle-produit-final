@@ -30,6 +30,7 @@ class ProduitFini {
       'proteine': proteine,
     };
   }
+
   Map<String, dynamic> toMapCendres() {
     return {
       'id': id,

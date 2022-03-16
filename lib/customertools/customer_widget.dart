@@ -51,7 +51,7 @@ class ListProduit extends StatelessWidget {
   ListProduit({ this.pourcentrage,required this.title, required this.onPressed});
   
   String checkinput(double? input) {
-    if (input != null  && input != 'null') {// input != 'null' cause module check null and return 'null'
+    if (input != null ) {
       return input.toString();
     }
     return '--';

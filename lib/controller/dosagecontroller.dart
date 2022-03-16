@@ -6,11 +6,12 @@ import '../model/produitfini.dart';
 import '../controller/suiviproduitcontroller.dart';
 
 class DosageController extends GetxController {
-  SuiviProduitController view = Get.put(SuiviProduitController());
+  
   double? masse;
   double? volume;
-  databasehelper c = databasehelper();
   String result = '';
+  SuiviProduitController view = Get.put(SuiviProduitController());
+  databasehelper c = databasehelper();
   void saveValue({required String value, required String type}) {
     double myDouble = double.parse(value);
     switch (type) {
@@ -46,7 +47,7 @@ class DosageController extends GetxController {
       proteine: resultDouble,
     );
     await c.updateproduit(fido);
-    view.updateList(index, resultDouble);
+    view.updateList(index, resultDouble,'proteine');
     update();
   }
 }

@@ -5,8 +5,8 @@ class ProduitFini {
   double? proteine;
   // double? matiereGrasse;
   double? cendres;
-  // double? humidite;
-  // double? acidite;
+  double? humidite;
+  double? acidite;
   ProduitFini({
     this.dateProduction,
     this.id,
@@ -14,8 +14,8 @@ class ProduitFini {
     this.proteine,
     // this.matiereGrasse,
     this.cendres,
-    // this.humidite,
-    // this.acidite,
+    this.humidite,
+    this.acidite,
   });
   Map<String, dynamic> toMap() {
     return {
@@ -37,6 +37,19 @@ class ProduitFini {
       'cendres': cendres,
     };
   }
+  Map<String, dynamic> toMapAcidite() {
+    return {
+      'id': id,
+      'acidite': acidite,
+    };
+  }
+  Map<String, dynamic> toMapHumidite() {
+    return {
+      'id': id,
+      'humidite': humidite,
+    };
+  }
+  
   // @override
   // String toString() {
   //   return 'produits{id: $id, name: $dateProduction, age: $jp}';

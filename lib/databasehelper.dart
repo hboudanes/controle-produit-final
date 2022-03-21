@@ -1,5 +1,6 @@
 import 'package:dosage/model/produitfini.dart';
 import 'package:path/path.dart';
+
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
@@ -31,11 +32,12 @@ class DatabaseHelper {
       print('from createDatabase ==> $e');
     }
   }
-
+ 
+ 
   initDB(Database db, int version) {
     // Run the CREATE TABLE statement on the database.
     return db.execute(
-      'CREATE TABLE produit(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, dateProduction TEXT,jp INTEGER,proteine DOUBLE,cendres DOUBLE)',
+      'CREATE TABLE produit(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, dateProduction TEXT,jp INTEGER,proteine DOUBLE,cendres DOUBLE,acidite DOUBLE,humidite DOUBLE)',
     );
   }
 
@@ -99,6 +101,47 @@ class DatabaseHelper {
     }
     // Get a reference to the database.
   }
+  Future<void> updateAcidite(ProduitFini produit) async {
+    try {
+      // Get a reference to the database.
+      final Database db = await createDatabase();
+
+      // Update the given produit.
+      await db.update(
+        'produit',
+        produit.toMapAcidite(),
+        // Ensure that the produit has a matching id.
+        where: 'id = ?',
+        // Pass the produit's id as a whereArg to prevent SQL injection.
+        whereArgs: [produit.id],
+      );
+     
+    } catch (e) {
+      print('from creatProduit ==> $e');
+    }
+    // Get a reference to the database.
+  }
+  // humidite
+  Future<void> updateHumidite(ProduitFini produit) async {
+    try {
+      // Get a reference to the database.
+      final Database db = await createDatabase();
+
+      // Update the given produit.
+      await db.update(
+        'produit',
+        produit.toMapHumidite(),
+        // Ensure that the produit has a matching id.
+        where: 'id = ?',
+        // Pass the produit's id as a whereArg to prevent SQL injection.
+        whereArgs: [produit.id],
+      );
+     
+    } catch (e) {
+      print('from creatProduit ==> $e');
+    }
+    // Get a reference to the database.
+  }
   Future<List<ProduitFini>> allProduit() async {
     try {
       // Get a reference to the database.
@@ -115,6 +158,8 @@ class DatabaseHelper {
           jp: maps[i]['jp'],
           proteine: maps[i]['proteine'],
           cendres: maps[i]['cendres'],
+          acidite: maps[i]['acidite'],
+          humidite: maps[i]['humidite'],
         );
       });
     } catch (e) {

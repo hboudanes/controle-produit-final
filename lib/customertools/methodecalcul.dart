@@ -1,3 +1,5 @@
+import 'package:dosage/view/aciditehuile.dart';
+
 class Calcul {
   // retune la dose de protiene dans Echantillon (methode de Kjeldahl)
   static double proteinDose({required double mass, required double volume}) {
@@ -10,5 +12,12 @@ class Calcul {
       required double masseCreuset,
       required double masseCreusetChauffe}) {
     return (masseCreusetChauffe - masseCreuset) * 100 / masseEchantillon;
+  }
+
+  static double aciditeHuile({
+    required double volume,
+    required double mass,
+  }) {
+    return volume * 2.82 / mass;
   }
 }

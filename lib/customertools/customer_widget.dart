@@ -52,7 +52,7 @@ class ListProduit extends StatelessWidget {
   
   String checkinput(double? input) {
     if (input != null ) {
-      return input.toString();
+      return input.toStringAsFixed(8);
     }
     return '--';
   }
@@ -60,7 +60,7 @@ class ListProduit extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Text(checkinput(pourcentrage) ),
-      subtitle: Text(title!),
+      subtitle: Text('$title%'),
       trailing: IconButton(
         icon: Icon(Icons.edit),
         onPressed: onPressed,
@@ -70,28 +70,7 @@ class ListProduit extends StatelessWidget {
 }
 
 
-// class TextFieldDate extends StatefulWidget{
-//   @override
-//   State<StatefulWidget> createState() {
-//     return _TextFieldDate ();
-//   }
-// }
 
-// class _TextFieldDate  extends State<TextFieldDate>{
-//   TextEditingController dateinput = TextEditingController();
-//   //text editing controller for text field
-
-//   // @override
-//   // void initState() {
-//   //   dateinput.text = ""; //set the initial value of text field
-//   //   super.initState();
-//   // }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return
-//   }
-// }
 class TextFieldDate extends StatelessWidget {
   TextEditingController dateinput = TextEditingController();
   final String? title;

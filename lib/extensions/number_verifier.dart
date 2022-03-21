@@ -10,7 +10,7 @@ extension NumberVerifier on String {
     // Both integer and double work.
     // Use int.tryParse if you want to check integer only.
     // Use double.tryParse if you want to check double only.
-    final number = num.tryParse(this);
+    var number = num.tryParse(this);
 
     if (number == null) {
       

@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       ],
       supportedLocales: [
         Locale('en', ''), // English, no country code
-        Locale('fr', 'fr'), // Spanish, no country code
+        Locale('fr', 'FR'), // Spanish, no country code
       ],
       title: 'Suivi la qualité de produit fini',
       debugShowCheckedModeBanner: false,

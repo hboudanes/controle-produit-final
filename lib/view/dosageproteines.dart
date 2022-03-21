@@ -1,3 +1,5 @@
+import 'package:dosage/extensions/number_verifier.dart';
+
 import '../controller/proteinecontroller.dart';
 
 import '../customertools/customer_widget.dart';
@@ -8,7 +10,7 @@ class DosageProteines extends StatelessWidget {
   static const route = '/Dosagepr';
   DosageProteines({Key? key}) : super(key: key);
   GlobalKey<FormState> _formpro = new GlobalKey<FormState>();
- 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,31 +41,36 @@ class DosageProteines extends StatelessWidget {
                           onsave: (String? Value) {
                             value.saveValue(value: Value!, type: 'm');
                           },
-                          valid: (String? Value) {
-                            value.valide(Value);
+                          valid: (String? value) {
+                            if (!value!.checkTryPars) {
+                              return 'Vérifiez votre saisie';
+                            }
+                            return null;
                           },
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         CustomInputform(
                           title: 'Volume cerse de HCI 0,1 N',
                           hint: 'Volume en ml',
                           onsave: (String? Value) {
                             value.saveValue(value: Value!, type: 'v');
                           },
-                          valid: (String? Value) {
-                            value.valide(Value);
+                          valid: (String? value) {
+                            if (!value!.checkTryPars) {
+                              return 'Vérifiez votre saisie';
+                            }
+                            return null;
                           },
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         CustomInputButton(
                           onPressed: () {
                             var x = _formpro.currentState;
                             if (x!.validate()) {
                               x.save();
-                              value.updateProduite(Get.arguments["id"],Get.arguments["index"]);
-                              
-                              
-                            }
+                              value.updateProteine(
+                                  Get.arguments["id"], Get.arguments["index"]);
+                              }
                           },
                           title: 'Calcul',
                         ),

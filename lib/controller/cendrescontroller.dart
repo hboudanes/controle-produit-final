@@ -1,3 +1,5 @@
+import '../extensions/number_verifier.dart';
+
 import '../controller/suiviproduitcontroller.dart';
 import 'package:get/get.dart';
 import '../customertools/methodecalcul.dart';
@@ -18,17 +20,17 @@ class CendresController extends GetxController {
       //masse Echantillon
       case "me":
         masseEchantillon = myDouble;
-      
+
         break;
       //La Masse De Creuset
       case "mc":
         masseCreuset = myDouble;
-      
+
         break;
       //La Masse De Creuset Après Chauffage à 550 degrés
       case "mcc":
         masseCreusetChauffe = myDouble;
-       
+
         break;
       default:
     }
@@ -44,12 +46,19 @@ class CendresController extends GetxController {
       id: parmID,
       cendres: resultDouble,
     );
-    
+
     await c.updateCendres(fido);
     view.updateList(index, resultDouble, 'cendres');
     update();
   }
 
+  String? valide(String? value) {
+    if (!value!.checkTryPars) {
+      return 'Vérifiez votre saisie';
+    }
+    print('dsdsd');
+    return null;
+  }
   // get results {
   //   double resultDouble = Calcul.teneurCender(
   //       masseEchantillon: masseEchantillon!,

@@ -3,7 +3,7 @@ class ProduitFini {
   final String? dateProduction;
   final int? jp;
   double? proteine;
-  // double? matiereGrasse;
+  double? matiereGrasse;
   double? cendres;
   double? humidite;
   double? acidite;
@@ -12,7 +12,7 @@ class ProduitFini {
     this.id,
     this.jp,
     this.proteine,
-    // this.matiereGrasse,
+    this.matiereGrasse,
     this.cendres,
     this.humidite,
     this.acidite,
@@ -47,6 +47,12 @@ class ProduitFini {
     return {
       'id': id,
       'humidite': humidite,
+    };
+  }
+  Map<String, dynamic> toMapMatiereGrasse() {
+    return {
+      'id': id,
+      'matiereGrasse': matiereGrasse,
     };
   }
   

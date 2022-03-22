@@ -1,10 +1,9 @@
-import '../controller/suiviproduitcontroller.dart';
-import '../extensions/number_verifier.dart';
-
-import '../controller/addproduitcontroller.dart';
-import '../customertools/customer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../controller/addproduitcontroller.dart';
+import '../customertools/customer_widget.dart';
+import '../controller/suiviproduitcontroller.dart';
+import '../extensions/number_verifier.dart';
 
 class AddProduit extends StatelessWidget {
   static const route = '/addproduit';

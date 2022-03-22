@@ -1,10 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../customertools/customer_widget.dart';
 import '../controller/aciditehuilecontroller.dart';
 import '../extensions/number_verifier.dart';
-import 'package:flutter/material.dart';
-
-import '../customertools/customer_widget.dart';
 
 class AciditeHuile extends StatelessWidget {
   static const route = '/acidite';
@@ -66,20 +64,19 @@ class AciditeHuile extends StatelessWidget {
                           CustomInputButton(
                             onPressed: () {
                               var x = _formpro.currentState;
-      
+
                               if (x!.validate()) {
                                 x.save();
-                                value.updateAcidite(
-                                    Get.arguments["id"], Get.arguments["index"]);
+                                value.updateAcidite(Get.arguments["id"],
+                                    Get.arguments["index"]);
                               }
                               // x!.save();
                             },
-                            title: 'Calcul',
+                            title: 'Calculer et Ajouter',
                           ),
                           const SizedBox(height: 40),
                           Text(
-                            value.result,
-                            // result != null ? '${result!.toStringAsFixed(12)}' : '',
+                            'Pourcentage :' + value.result + "%",
                             style: TextStyle(fontSize: 20),
                           ),
                         ],

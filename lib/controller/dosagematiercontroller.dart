@@ -6,10 +6,10 @@ import '../customertools/methodecalcul.dart';
 import '../databasehelper.dart';
 import '../model/produitfini.dart';
 
-class CendresController extends GetxController {
-  double? masseEchantillon;
-  double? masseCreuset;
-  double? masseCreusetChauffe;
+class DosageMatierController extends GetxController {
+  double? masse;
+  double? masseSec;
+  double? masseExtra;
   String result = '';
   SuiviProduitController view = Get.put(SuiviProduitController());
   DatabaseHelper c = DatabaseHelper();
@@ -18,46 +18,38 @@ class CendresController extends GetxController {
     double myDouble = double.parse(value);
     switch (type) {
       //masse Echantillon
-      case "me":
-        masseEchantillon = myDouble;
+      case "m":
+        masse = myDouble;
 
         break;
       //La Masse De Creuset
-      case "mc":
-        masseCreuset = myDouble;
+      case "ms":
+        masseSec = myDouble;
 
         break;
       //La Masse De Creuset Après Chauffage à 550 degrés
-      case "mcc":
-        masseCreusetChauffe = myDouble;
+      case "me":
+        masseExtra = myDouble;
 
         break;
       default:
     }
   }
 
-  void updateCender(int parmID, int index) async {
-    double resultDouble = Calcul.teneurCender(
-        masseEchantillon: masseEchantillon!,
-        masseCreuset: masseCreuset!,
-        masseCreusetChauffe: masseCreusetChauffe!);
+  void updateMatiereGrasse(int parmID, int index) async {
+    double resultDouble = Calcul.matiereGrasse(
+        masse: masse!, masseSec: masseSec!, masseExtra: masseExtra!);
     result = resultDouble.toStringAsFixed(12);
+    print('-------------');
+    print(parmID.toString());
+    print('-------------');
     var fido = ProduitFini(
       id: parmID,
-      cendres: resultDouble,
+      matiereGrasse: resultDouble,
     );
 
-    await c.updateCendres(fido);
-    view.updateList(index, resultDouble, 'cendres');
+    await c.updateMatiereGrasse(fido);
+    view.updateList(index, resultDouble, 'matiereGrasse');
     update();
   }
-
-  String? valide(String? value) {
-    if (!value!.checkTryPars) {
-      return 'Vérifiez votre saisie';
-    }
-    print('dsdsd');
-    return null;
-  }
-
 }

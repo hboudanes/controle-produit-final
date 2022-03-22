@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../controller/cendrescontroller.dart';
+import '../controller/DosageMatierController.dart';
 import '../customertools/customer_widget.dart';
 import '../extensions/number_verifier.dart';
 
-class TeneurCendre extends StatelessWidget {
-  static const route = '/cendre';
-  TeneurCendre({Key? key}) : super(key: key);
+class DosageMatiereGrasse extends StatelessWidget {
+  static const route = '/dosagematieregrasse';
+  DosageMatiereGrasse({Key? key}) : super(key: key);
   GlobalKey<FormState> _formpro = new GlobalKey<FormState>();
 
   @override
@@ -17,8 +17,8 @@ class TeneurCendre extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20),
           child: Form(
             key: _formpro,
-            child: GetBuilder<CendresController>(
-                init: CendresController(),
+            child: GetBuilder<DosageMatierController>(
+                init: DosageMatierController(),
                 builder: (value) {
                   return Column(
                     children: [
@@ -26,46 +26,45 @@ class TeneurCendre extends StatelessWidget {
                         height: 120,
                       ),
                       Text(
-                        'DOSAGE DES CENDRES BRUTES jp: ${Get.arguments["jp"]}',
+                        'Dosage De La Matière Grasse J.P: ${Get.arguments["jp"]}',
                         style: TextStyle(fontSize: 20),
                       ),
                       SizedBox(
                         height: 50,
                       ),
                       CustomInputform(
-                        title: 'Masse  De L\'echantillon Analysé',
+                        title: 'Masse De La Prise D’essai',
+                        hint: 'Masse en g',
+                        onsave: (String? Value) {
+                          value.saveValue(value: Value!, type: 'm');
+                        },
+                        valid: (String? value) {
+                          if (!value!.checkTryPars) {
+                            return 'Vérifiez votre saisie';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 30),
+                      CustomInputform(
+                        title: 'Masse Du Bécher Sec',
+                        hint: 'Masse en g',
+                        onsave: (String? Value) {
+                          value.saveValue(value: Value!, type: 'ms');
+                        },
+                        valid: (String? value) {
+                          if (!value!.checkTryPars) {
+                            return 'Vérifiez votre saisie';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 30),
+                      CustomInputform(
+                        title: 'Masse Du Bécher Après Extraction',
                         hint: 'Masse en g',
                         onsave: (String? Value) {
                           value.saveValue(value: Value!, type: 'me');
-                        },
-                        valid: (String? value) {
-                          if (!value!.checkTryPars) {
-                            return 'Vérifiez votre saisie';
-                          }
-                          return null;
-                        },
-                      ),
-                      SizedBox(height: 30),
-                      CustomInputform(
-                        title: 'La Masse De Creuset Vide',
-                        hint: 'Masse en g',
-                        onsave: (String? Value) {
-                          value.saveValue(value: Value!, type: 'mc');
-                        },
-                        valid: (String? value) {
-                          if (!value!.checkTryPars) {
-                            return 'Vérifiez votre saisie';
-                          }
-                          return null;
-                        },
-                      ),
-                      SizedBox(height: 30),
-                      CustomInputform(
-                        title:
-                            'La Masse De Creuset Après Chauffage à 550 degrés',
-                        hint: 'Masse en g',
-                        onsave: (String? Value) {
-                          value.saveValue(value: Value!, type: 'mcc');
                         },
                         valid: (String? value) {
                           if (!value!.checkTryPars) {
@@ -81,7 +80,8 @@ class TeneurCendre extends StatelessWidget {
 
                           if (x!.validate()) {
                             x.save();
-                            value.updateCender(
+
+                            value.updateMatiereGrasse(
                                 Get.arguments["id"], Get.arguments["index"]);
                           }
                           // x!.save();

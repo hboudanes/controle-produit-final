@@ -20,4 +20,11 @@ class Calcul {
   }) {
     return volume * 2.82 / mass;
   }
+  
+  static double matiereGrasse(
+      {required double masse,
+      required double masseSec,
+      required double masseExtra}) {
+    return (masseExtra - masseSec) * 100 / masse;
+  }
 }

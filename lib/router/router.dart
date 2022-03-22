@@ -1,6 +1,7 @@
 import 'package:dosage/view/aciditehuile.dart';
 
 import '../view/addproduit.dart';
+import '../view/dosagematieregrasse.dart';
 import '../view/dosageproteines.dart';
 import '../view/teneurcendre.dart';
 import 'package:flutter/material.dart';
@@ -14,4 +15,5 @@ Map<String, Widget Function(BuildContext)> route = <String, WidgetBuilder>{
   DosageProteines.route: (context) => DosageProteines(),
   TeneurCendre.route: (context) => TeneurCendre(),
   AciditeHuile.route:(context) =>AciditeHuile(),
+  DosageMatiereGrasse.route: (context) =>DosageMatiereGrasse(),
 };

@@ -1,10 +1,8 @@
-import 'package:dosage/extensions/number_verifier.dart';
-
-import '../controller/proteinecontroller.dart';
-
-import '../customertools/customer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../extensions/number_verifier.dart';
+import '../controller/proteinecontroller.dart';
+import '../customertools/customer_widget.dart';
 
 class DosageProteines extends StatelessWidget {
   static const route = '/Dosagepr';
@@ -70,13 +68,13 @@ class DosageProteines extends StatelessWidget {
                               x.save();
                               value.updateProteine(
                                   Get.arguments["id"], Get.arguments["index"]);
-                              }
+                            }
                           },
-                          title: 'Calcul',
+                          title: 'Calculer et Ajouter',
                         ),
                         SizedBox(height: 40),
                         Text(
-                          value.result,
+                          'Pourcentage :' + value.result + "%",
                           style: TextStyle(fontSize: 20),
                         ),
                       ]);

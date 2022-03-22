@@ -1,6 +1,5 @@
-import 'package:dosage/model/produitfini.dart';
+import '../model/produitfini.dart';
 import 'package:path/path.dart';
-
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelper {
@@ -32,12 +31,11 @@ class DatabaseHelper {
       print('from createDatabase ==> $e');
     }
   }
- 
- 
+
   initDB(Database db, int version) {
     // Run the CREATE TABLE statement on the database.
     return db.execute(
-      'CREATE TABLE produit(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, dateProduction TEXT,jp INTEGER,proteine DOUBLE,cendres DOUBLE,acidite DOUBLE,humidite DOUBLE)',
+      'CREATE TABLE produit(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, dateProduction TEXT,jp INTEGER,proteine DOUBLE,cendres DOUBLE,acidite DOUBLE,humidite DOUBLE,matiereGrasse DOUBLE)',
     );
   }
 
@@ -60,7 +58,7 @@ class DatabaseHelper {
       print('from creatProduit ==> $e');
     }
   }
-  
+
   Future<void> updateProteine(ProduitFini produit) async {
     try {
       // Get a reference to the database.
@@ -75,12 +73,12 @@ class DatabaseHelper {
         // Pass the produit's id as a whereArg to prevent SQL injection.
         whereArgs: [produit.id],
       );
-     
     } catch (e) {
       print('from creatProduit ==> $e');
     }
     // Get a reference to the database.
   }
+
   Future<void> updateCendres(ProduitFini produit) async {
     try {
       // Get a reference to the database.
@@ -95,12 +93,12 @@ class DatabaseHelper {
         // Pass the produit's id as a whereArg to prevent SQL injection.
         whereArgs: [produit.id],
       );
-     
     } catch (e) {
       print('from creatProduit ==> $e');
     }
     // Get a reference to the database.
   }
+
   Future<void> updateAcidite(ProduitFini produit) async {
     try {
       // Get a reference to the database.
@@ -115,12 +113,12 @@ class DatabaseHelper {
         // Pass the produit's id as a whereArg to prevent SQL injection.
         whereArgs: [produit.id],
       );
-     
     } catch (e) {
       print('from creatProduit ==> $e');
     }
     // Get a reference to the database.
   }
+
   // humidite
   Future<void> updateHumidite(ProduitFini produit) async {
     try {
@@ -136,12 +134,51 @@ class DatabaseHelper {
         // Pass the produit's id as a whereArg to prevent SQL injection.
         whereArgs: [produit.id],
       );
-     
     } catch (e) {
       print('from creatProduit ==> $e');
     }
     // Get a reference to the database.
   }
+
+  //matiereGrasse
+  Future<void> updateMatiereGrasse(ProduitFini produit) async {
+    try {
+      // Get a reference to the database.
+      final Database db = await createDatabase();
+
+      // Update the given produit.
+      await db.update(
+        'produit',
+        produit.toMapMatiereGrasse(),
+        // Ensure that the produit has a matching id.
+        where: 'id = ?',
+        // Pass the produit's id as a whereArg to prevent SQL injection.
+        whereArgs: [produit.id],
+      );
+    } catch (e) {
+      print('from creatProduit ==> $e');
+    }
+    // Get a reference to the database.
+  }
+
+  Future<void> deleteProduit(int id) async {
+    try {
+      // Get a reference to the database.
+      final Database db = await createDatabase();
+
+      // Remove the Produit from the database.
+      await db.delete(
+        'produit',
+        // Use a `where` clause to delete a specific Produit.
+        where: 'id = ?',
+        // Pass the Produit's id as a whereArg to prevent SQL injection.
+        whereArgs: [id],
+      );
+    } catch (e) {
+      print('from creatProduit ==> $e');
+    }
+  }
+
   Future<List<ProduitFini>> allProduit() async {
     try {
       // Get a reference to the database.
@@ -149,7 +186,7 @@ class DatabaseHelper {
 
       // Query the table for all The produit.
       final List<Map<String, dynamic>> maps = await db.query('produit');
-
+      print(maps.length.toString());
       // Convert the List<Map<String, dynamic> into a List<ProduitFini>.
       return List.generate(maps.length, (i) {
         return ProduitFini(
@@ -160,6 +197,7 @@ class DatabaseHelper {
           cendres: maps[i]['cendres'],
           acidite: maps[i]['acidite'],
           humidite: maps[i]['humidite'],
+          matiereGrasse: maps[i]['matiereGrasse'],
         );
       });
     } catch (e) {

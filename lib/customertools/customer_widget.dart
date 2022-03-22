@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
+import 'package:flutter/services.dart';
 class CustomInputform extends StatelessWidget {
   final String? title;
   final String? hint;
@@ -22,6 +22,8 @@ class CustomInputform extends StatelessWidget {
         onSaved: onsave,
         validator: valid,
         decoration: InputDecoration(hintText: hint),
+        keyboardType: TextInputType.number, 
+        maxLines: 1,
       ),
     ]);
   }
@@ -45,21 +47,23 @@ class CustomInputButton extends StatelessWidget {
 }
 
 class ListProduit extends StatelessWidget {
-  double? pourcentrage ;
+  double? pourcentrage;
   String? title;
   void Function()? onPressed;
-  ListProduit({ this.pourcentrage,required this.title, required this.onPressed});
-  
+  ListProduit(
+      {this.pourcentrage, required this.title, required this.onPressed});
+
   String checkinput(double? input) {
-    if (input != null ) {
+    if (input != null) {
       return input.toStringAsFixed(8);
     }
     return '--';
   }
+
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(checkinput(pourcentrage) ),
+      title: Text(checkinput(pourcentrage)),
       subtitle: Text('$title%'),
       trailing: IconButton(
         icon: Icon(Icons.edit),
@@ -68,8 +72,6 @@ class ListProduit extends StatelessWidget {
     );
   }
 }
-
-
 
 class TextFieldDate extends StatelessWidget {
   TextEditingController dateinput = TextEditingController();
@@ -126,4 +128,21 @@ class TextFieldDate extends StatelessWidget {
       ),
     ]);
   }
+}
+showLoaderDialog(BuildContext context) {
+  AlertDialog alert = AlertDialog(
+    content: new Row(
+      children: [
+        CircularProgressIndicator(),
+        Container(margin: EdgeInsets.only(left: 7), child: Text("Loading...")),
+      ],
+    ),
+  );
+  showDialog(
+    barrierDismissible: false,
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

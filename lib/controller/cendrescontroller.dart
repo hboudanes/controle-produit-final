@@ -56,7 +56,7 @@ class CendresController extends GetxController {
     if (!value!.checkTryPars) {
       return 'Vérifiez votre saisie';
     }
-    print('dsdsd');
+    
     return null;
   }
 

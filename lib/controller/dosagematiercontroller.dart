@@ -40,9 +40,7 @@ class DosageMatierController extends GetxController {
     double resultDouble = Calcul.matiereGrasse(
         masse: masse!, masseSec: masseSec!, masseExtra: masseExtra!);
     result = resultDouble.toStringAsFixed(12);
-    print('-------------');
-    print(parmID.toString());
-    print('-------------');
+    
     var fido = ProduitFini(
       id: parmID,
       matiereGrasse: resultDouble,

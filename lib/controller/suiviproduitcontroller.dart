@@ -17,10 +17,7 @@ class SuiviProduitController extends GetxController {
   void initProduitFini() async {
     produitFini = <ProduitFini>[].obs;
     produitFini.addAll(await c.allProduit());
-    print('-------');
-    print(produitFini.length.toString());
-    print(produitFini.length.toString());
-    print('-------');
+    
     for (var i = 0; i < produitFini.length - 1; i++) {
       isExpanded.add(false);
     }
@@ -139,13 +136,13 @@ class SuiviProduitController extends GetxController {
   }
 
   deleteProduitd(int parmID, int index) async {
-    print('$parmID');
+   
     await c.deleteProduit(parmID);
     produitFini.removeAt(index);
   }
 
   Future updatehumidite(int parmID, double resultDouble) async {
-    print('hello');
+    
     var fido = ProduitFini(
       id: parmID,
       humidite: resultDouble,

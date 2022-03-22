@@ -25,7 +25,6 @@ class SuiviProduit extends StatelessWidget {
           IconButton(
               onPressed: () async {
                 if (viewmodule.produitFini.isNotEmpty) {
-                  print('3amar');
                   showLoaderDialog(context);
                   await viewmodule.createExcel();
                   Navigator.pop(context);

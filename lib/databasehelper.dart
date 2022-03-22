@@ -186,7 +186,7 @@ class DatabaseHelper {
 
       // Query the table for all The produit.
       final List<Map<String, dynamic>> maps = await db.query('produit');
-      print(maps.length.toString());
+     
       // Convert the List<Map<String, dynamic> into a List<ProduitFini>.
       return List.generate(maps.length, (i) {
         return ProduitFini(

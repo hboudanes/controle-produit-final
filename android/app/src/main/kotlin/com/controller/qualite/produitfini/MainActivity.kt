@@ -1,4 +1,4 @@
-package com.example.dosage
+package com.controller.qualite.produitfini
 
 import io.flutter.embedding.android.FlutterActivity
 

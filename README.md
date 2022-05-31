@@ -1,17 +1,27 @@
 # controle-produit-final
 
+Application (Controller la qualité de produit fini) permettant de simplifie la calculer de méthode d'analyse effectue sur échantillon de produit fini (farine de poisson et huile) et enregistrer le résultat de cette analyse localement aide de technologie SQLite et importer les résultats ce forme Excel pour améliorer la traçabilité de produit fini.
 
-A new Flutter project.
+## packgename
 
-## Getting Started
+com.controller.qualite.produitfini
 
-This project is a starting point for a Flutter application.
+## Langage et Framework
+Dart 2.16.1, flutter 2.10.2 
 
-A few resources to get you started if this is your first Flutter project:
+## Permission	Stockage
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Plateforme pris en charge	Compatible avec toutes les plateformes, nativement à partir d'une seule base code.
+SDK	">=2.15.0 <3.0.0"
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Dépendances et le paquet	
+  get: ^4.6.1
+  sqflite:
+  path:
+  intl: ^0.17.0
+  awesome_dialog: ^2.1.2
+  syncfusion_flutter_xlsio: ^19.4.56-beta
+  open_file: ^3.2.1
+  path_provider: ^2.0.1
+  permission_handler: ^9.2.0
+  external_path: ^1.0.1

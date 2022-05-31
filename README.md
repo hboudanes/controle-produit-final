@@ -15,13 +15,13 @@ Plateforme pris en charge	Compatible avec toutes les plateformes, nativement à 
 SDK	">=2.15.0 <3.0.0"
 
 ## Dépendances et le paquet	
-  get: ^4.6.1
-  sqflite:
-  path:
-  intl: ^0.17.0
-  awesome_dialog: ^2.1.2
-  syncfusion_flutter_xlsio: ^19.4.56-beta
-  open_file: ^3.2.1
-  path_provider: ^2.0.1
-  permission_handler: ^9.2.0
-  external_path: ^1.0.1
+  ### get: ^4.6.1
+  ### sqflite:
+  ### path:
+  ### intl: ^0.17.0
+  ### awesome_dialog: ^2.1.2
+  ### syncfusion_flutter_xlsio: ^19.4.56-beta
+  ### open_file: ^3.2.1
+  ### path_provider: ^2.0.1
+  ### permission_handler: ^9.2.0
+  ### external_path: ^1.0.1
